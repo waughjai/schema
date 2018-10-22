@@ -3,17 +3,14 @@
 declare( strict_types = 1 );
 use PHPUnit\Framework\TestCase;
 use WaughJ\Schema\Schema;
+use WaughJ\Schema\InvalidSchemaException;
 
 class SchemaTest extends TestCase
 {
 	public function testInvalidSchema() : void
 	{
+		$this->expectException( InvalidSchemaException::class );
 		$schema = new Schema( 'afsdfsf' );
-		$this->assertEquals( $schema->getScript(), '' );
-		$schema = new Schema( '{asfsdf:["adad",2,4}' );
-		$this->assertEquals( $schema->getScript(), '' );
-		$schema = new Schema( $schema );
-		$this->assertEquals( $schema->getScript(), '' );
 	}
 
 	public function testValidSchema() : void
@@ -54,10 +51,6 @@ class SchemaTest extends TestCase
 		$this->assertTrue( is_array( $schema->getData() ) );
 		$schema = new Schema('[]');
 		$this->assertTrue( is_array( $schema->getData() ) );
-		$schema = new Schema( 'afsdfsf' );
-		$this->assertNull( $schema->getData() );
-		$schema = new Schema( '{asfsdf:["adad",2,4}' );
-		$this->assertNull( $schema->getData() );
 	}
 
 	public function testAddEntry() : void

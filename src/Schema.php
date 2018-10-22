@@ -21,7 +21,7 @@ namespace WaughJ\Schema
 					}
 					else
 					{
-						$this->schema = null;
+						throw new InvalidSchemaException();
 					}
 				}
 				else if ( is_array( $init_data ) )
@@ -56,7 +56,7 @@ namespace WaughJ\Schema
 				return ( $schema_text === '' ) ? '' : '<script type="application/ld+json">' . $schema_text . '</script>';
 			}
 
-			public function getData() : ?array
+			public function getData() : array
 			{
 				return $this->schema;
 			}
