@@ -1,0 +1,23 @@
+{
+    "name": "waughj/schema",
+	"description": "Collection o' classes to ease adding schema to web pages.",
+    "keywords": [ "schema" ],
+    "license": "GPL-2.0-or-later",
+    "type": "library",
+    "require-dev": {
+        "phpunit/phpunit": "^7.5@dev"
+    },
+    "authors": [
+        {
+            "name": "Jaimeson Waugh",
+            "email": "waughjai@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "WaughJ\\Schema\\": "src/"
+        }
+    }
+}
