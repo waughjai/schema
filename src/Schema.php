@@ -47,6 +47,11 @@ namespace WaughJ\Schema
 			return ( $schema_text === '' ) ? '' : '<script type="application/ld+json">' . $schema_text . '</script>';
 		}
 
+		public function getData() : ?array
+		{
+			return $this->schema;
+		}
+
 		private function getSchemaText() : string
 		{
 			return ( $this->schema === null ) ? '' : json_encode( $this->schema );

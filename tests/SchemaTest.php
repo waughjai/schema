@@ -38,5 +38,21 @@ class SchemaTest extends TestCase
 		$this->assertEquals( $schema->getScript(), self::EMPTY_SCHEMA_EXPECTED_CONTENT );
 	}
 
+	public function testData() : void
+	{
+		$schema = new Schema();
+		$this->assertTrue( is_array( $schema->getData() ) );
+		$schema = new Schema([]);
+		$this->assertTrue( is_array( $schema->getData() ) );
+		$schema = new Schema('{}');
+		$this->assertTrue( is_array( $schema->getData() ) );
+		$schema = new Schema('[]');
+		$this->assertTrue( is_array( $schema->getData() ) );
+		$schema = new Schema( 'afsdfsf' );
+		$this->assertNull( $schema->getData() );
+		$schema = new Schema( '{asfsdf:["adad",2,4}' );
+		$this->assertNull( $schema->getData() );
+	}
+
 	private const EMPTY_SCHEMA_EXPECTED_CONTENT = '<script type="application/ld+json">{"@context":"https:\/\/schema.org"}</script>';
 }
