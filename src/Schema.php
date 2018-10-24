@@ -42,7 +42,7 @@ namespace WaughJ\Schema
 
 			public function __toString()
 			{
-				return $this->getText();
+				return $this->getScript();
 			}
 
 			public function print() : void
